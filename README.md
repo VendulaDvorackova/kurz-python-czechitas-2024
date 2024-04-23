@@ -1,1 +1,1 @@
-# kurz-python-czechitas-jaro-2024
+# kurz-python-czechitas-2024
