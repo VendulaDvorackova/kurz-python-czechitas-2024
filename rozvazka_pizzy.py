@@ -16,7 +16,6 @@ class Pizza(Item):
     def add_extra(self, ingredient, quantity, price_per_ingredient):
         self.ingredients[ingredient] = quantity
         self.price += quantity * price_per_ingredient
-        return
 
     def __str__(self):
         ingredients = ", ".join([f"{ingredient}: {quantity} g" for ingredient, quantity in self.ingredients.items()])
@@ -39,8 +38,7 @@ class Order:
 #Označí objednávku jako doručenou.
     def mark_delivered(self):
         if self.status != "Doručeno":
-            self.status = "Doručeno"
-            return 
+            self.status = "Doručeno" 
     
     def __str__(self):
         self.items = "".join([f"{item}" for item in self.items])
@@ -57,20 +55,20 @@ class DeliveryPerson:
     def assign_order(self, order: Order):
         if self.available == True:
             self.current_order = order
-            self.available = "Na cestě"
+            self.order_status = "Na cestě"
             print(f"Uživateli {self.name} byla přiřazena objednávka: {order}")
-            return
         else:
             return "Doručovatel je nedostupný."
 
 #Označí objednávku jako doručenou a doručovatele znovu učiní dostupným.
     def complete_delivery(self):
         self.current_order.mark_delivered()
+        self.current_order = None
         self.available = True
         return "Objednávka byla doručena."
 
     def __str__(self):
-        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self. available}."
+        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self.order_status}."
 
 # Vytvoření instance pizzy a manipulace s ní
 margarita = Pizza("Margarita", 200, {"sýr": 100, "rajčata": 150})
