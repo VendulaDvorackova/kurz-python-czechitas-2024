@@ -55,7 +55,8 @@ class DeliveryPerson:
     def assign_order(self, order: Order):
         if self.available == True:
             self.current_order = order
-            self.order_status = "Na cestě"
+            self.current_order.status = "Na cestě"
+            self.available = False
             print(f"Uživateli {self.name} byla přiřazena objednávka: {order}")
         else:
             return "Doručovatel je nedostupný."
@@ -68,7 +69,7 @@ class DeliveryPerson:
         return "Objednávka byla doručena."
 
     def __str__(self):
-        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self.order_status}."
+        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self.current_order.status}."
 
 # Vytvoření instance pizzy a manipulace s ní
 margarita = Pizza("Margarita", 200, {"sýr": 100, "rajčata": 150})
