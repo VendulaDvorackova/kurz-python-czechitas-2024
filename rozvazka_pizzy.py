@@ -69,7 +69,7 @@ class DeliveryPerson:
         return "Objednávka byla doručena."
 
     def __str__(self):
-        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self.current_order.status}."
+        return f"Jméno doručovatele: {self.name}, telefonní číslo: {self.phone_number}, dostupnost: {self.available}."
 
 # Vytvoření instance pizzy a manipulace s ní
 margarita = Pizza("Margarita", 200, {"sýr": 100, "rajčata": 150})
